@@ -17,7 +17,7 @@ class Users extends Dbh
             return 3; //true
         }
 
-        $stmt = $this->connect()->prepare('INSERT INTO user (username, pass, date) VALUES (?,?, NOW())');
+        $stmt = $this->connect()->prepare("INSERT INTO users (us_username, us_password, us_date_created, us_status) VALUES (?,?, NOW(), 'active')");
 
         $stmt->bind_param('ss', $email, $hashed_password);
         $result = $stmt->execute();
